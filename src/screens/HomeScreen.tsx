@@ -91,7 +91,6 @@ const HomeScreen = ({navigation}: { navigation: HomeNavProp }) => {
     };
   }, [fetchCoins]);
 
-
   const onRefresh = async () => {
     setRefreshing(true);
     setPage(1);
@@ -108,7 +107,6 @@ const HomeScreen = ({navigation}: { navigation: HomeNavProp }) => {
     setPage(nextPage);
     setLoadingMore(false);
   };
-
 
   const toggleFavorite = useCallback(
     (coinId: string) => {

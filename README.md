@@ -27,24 +27,18 @@ A React Native mobile application for tracking cryptocurrency prices in real tim
 ## Project Structure
 
 src/
-├── components/
-│ └── RenderCoin # Reusable coin card component
-├── context/
-│ └── AppContext # Global state — favorites
-├── hooks/
-│ └── useNetworkStatus # Online/offline detection
-├── screens/
-│ ├── PreviewScreen # Splash/loading screen
-│ ├── WelcomeScreen # Onboarding screen
-│ ├── HomeScreen # Coin list with search and pagination
-│ ├── FavoritesScreen # Saved favorites
-│ └── DetailsScreen # Detailed coin info
-├── services/
-│ └── coinService # CoinGecko API calls
-├── types/
-│ └── coin # TypeScript interfaces
-└── utils/
-└── formatters # Number/price formatting helpers
+-components/RenderCoin # Reusable coin card component
+-context/AppContext # Global state — favorites
+-hooks/useNetworkStatus # Online/offline detection
+-screens/
+*PreviewScreen # Splash/loading screen
+*WelcomeScreen # Onboarding screen
+*HomeScreen # Coin list with search and pagination
+*FavoritesScreen # Saved favorites
+\*DetailsScreen # Detailed coin info
+-services/coinService # CoinGecko API calls
+-types/coin # TypeScript interfaces
+-utils/formatters # Number/price formatting helpers
 
 ## Getting Started
 
