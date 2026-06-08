@@ -8,6 +8,7 @@ import {
   TextInput,
   RefreshControl,
   TouchableOpacity,
+  Image
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -199,11 +200,9 @@ const HomeScreen = ({navigation}: { navigation: HomeNavProp }) => {
           }
           ListEmptyComponent={() => {
             return (
-              <View>
+              <View style={{ alignItems: 'center', marginTop: 60 }}>
+                <Image source={require('../../assets/empty.png')} style={styles.emptyIcon} />
                 <Text style={styles.errorText}>No coins found.</Text>
-                <TouchableOpacity onPress={onRefresh} style={styles.refreshBtn}>
-                  <Text style={styles.refreshText}>Tap to refresh</Text>
-                </TouchableOpacity>
               </View>
             )
           }}
@@ -243,6 +242,11 @@ const styles = StyleSheet.create({
     color: '#EF4444',
     textAlign: 'center',
     marginTop: 20,
+  },
+  emptyIcon: {
+    height: 80,
+    width: 80,
+    marginBottom: 20,
   },
   refreshBtn: {
     marginTop: 12,

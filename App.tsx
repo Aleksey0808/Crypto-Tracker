@@ -10,18 +10,22 @@ import PreviewScreen from './src/screens/PreviewScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import HomeScreen from "./src/screens/HomeScreen";
 import DetailsScreen from "./src/screens/DetailsScreen";
+import FavoritesScreen from "./src/screens/FavoritesScreen";
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
+import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 
 export type RootStackParamList = {
   Preview: undefined;
   Welcome: undefined;
   Home: undefined;
   Details: { coinId: string };
+  Favorites: undefined;
 };
 
 type TabParamList = {
   HomeTab: undefined;
+  Favorites: undefined;
 };
 
 const Stack = createStackNavigator<RootStackParamList, undefined>();
@@ -35,6 +39,8 @@ const TabNavigator = () => {
         tabBarIcon: ({ focused, color }) => {
           if (route.name === 'HomeTab') {
             return <FontAwesome5 name="bitcoin" size={24} color={color} />
+          } else if (route.name === 'Favorites') {
+            return <MaterialIcons name="favorite" size={24} color={color} />
           } 
         },
         tabBarActiveTintColor: '#ead409ff', 
@@ -45,6 +51,7 @@ const TabNavigator = () => {
       })}
     >
       <Tab.Screen name="HomeTab" component={HomeScreen} options={{ headerShown: false }} />
+      <Tab.Screen name="Favorites" component={FavoritesScreen} options={{ headerShown: false }} />
     </Tab.Navigator>
   );
 };
