@@ -45,9 +45,7 @@ const HomeScreen = ({navigation}: { navigation: HomeNavProp }) => {
   }, []);
 
   const fetchCoins = useCallback(async (pageNum: number, replace: boolean) => {
-    console.log('fetchCoins START', pageNum);
     if (activeRequestRef.current) {
-      console.log('aborting previous request');
       activeRequestRef.current.abort();
     }
 
@@ -56,28 +54,20 @@ const HomeScreen = ({navigation}: { navigation: HomeNavProp }) => {
 
     try {
       setError('');
-      console.log('before getMarketCoins');
       const data = await getMarketCoins({
         page: pageNum,
         perPage: PAGE_SIZE,
         signal: controller.signal,
       });
-      console.log('after getMarketCoins, data length:', data.length);
-      console.log('isMounted:', 'aborted:', controller.signal.aborted);
 
-      if (controller.signal.aborted) {
-        console.log('RETURNING EARLY - mounted or aborted');
-        return;
-      }
+      if (controller.signal.aborted) return;
 
       setCoins((prev) => (replace ? data : [...prev, ...data]));
       setHasMore(data.length === PAGE_SIZE);
     } catch (err) {
-      console.log('CATCH:', err);
       if (isRequestCanceled(err)) return;
       setError(getApiErrorMessage(err, 'Failed to load data. Pull down to retry.'));
     } finally {
-      console.log('FINALLY');
       if (activeRequestRef.current === controller) {
         activeRequestRef.current = null;
 
