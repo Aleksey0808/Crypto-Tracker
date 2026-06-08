@@ -26,6 +26,7 @@ const RenderCoin = React.memo(({ item, navigation, toggleFavorite, favorites }: 
       <TouchableOpacity
         style={styles.card}
         activeOpacity={0.8}
+        onPress={() => navigation.navigate('Details', { coinId: item.id })}
       >
         <FastImage
           source={{

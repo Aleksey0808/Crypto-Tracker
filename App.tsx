@@ -9,6 +9,7 @@ import AppProvider from './src/context/AppContext';
 import PreviewScreen from './src/screens/PreviewScreen';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import HomeScreen from "./src/screens/HomeScreen";
+import DetailsScreen from "./src/screens/DetailsScreen";
 
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 
@@ -16,6 +17,7 @@ export type RootStackParamList = {
   Preview: undefined;
   Welcome: undefined;
   Home: undefined;
+  Details: { coinId: string };
 };
 
 type TabParamList = {
@@ -60,6 +62,7 @@ export default function App() {
           <Stack.Screen name="Preview" component={PreviewScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Welcome" component={WelcomeScreen} options={{ headerShown: false }} />
           <Stack.Screen name="Home" component={TabNavigator} options={{ headerShown: false }} />
+          <Stack.Screen name="Details" component={DetailsScreen} options={{ headerShown: false }} />
         </Stack.Navigator>
       </NavigationContainer>
     </AppProvider>
